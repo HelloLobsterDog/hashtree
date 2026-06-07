@@ -1,6 +1,6 @@
 
 run:
-    @uv run hashtree
+    @uv run hashtree .
 
 setup:
     @uv sync

@@ -1,9 +1,9 @@
 [project]
 name = "hashtree"
-version = "0.1.1"
+version = "0.0.1"
 description = "CLI utility to compute hashes for an entire directory tree and all files within"
 readme = "README.md"
-requires-python = ">=3.10" # 3.10 is the oldest currently supported version of python, allowing the most possible verions to run this.
+requires-python = ">=3.12" # Path.walk was added in 3.12
 dependencies = []
 
 [dependency-groups]
