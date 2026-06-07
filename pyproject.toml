@@ -1,0 +1,25 @@
+[project]
+name = "hashtree"
+version = "0.1.1"
+description = "CLI utility to compute hashes for an entire directory tree and all files within"
+readme = "README.md"
+requires-python = ">=3.10" # 3.10 is the oldest currently supported version of python, allowing the most possible verions to run this.
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "mypy>=1.19.0",
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.14.8",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff.lint]
+extend-select = ["E", "W"]
+
+[tool.ruff.lint.pycodestyle]
+max-line-length = 150
