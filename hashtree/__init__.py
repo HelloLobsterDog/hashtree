@@ -20,17 +20,34 @@ def run() -> None:
 
 
 def hash_tree(path: Path) -> str:
-    for current_directory, dirs, files in path.walk(top_down=True):
-        dirs.sort()
+    stack: list[Path] = []
+    todo_list: list[Path] = [path]
+    while todo_list:
+        directory: Path = todo_list.pop()
+        print("┃"*(len(stack)-1) + "┣" + str(directory.stem))
+        while stack and directory.parent != stack[-1]:
+            stack.pop()
+        stack.append(directory)
+
+        subdirectories: list[Path] = []
+        files: list[Path] = []
+        for item in directory.iterdir():
+            if item.is_symlink():
+                raise NotImplementedError("symlinks not implemented")
+            elif item.is_dir():
+                subdirectories.append(item)
+            elif item.is_file():
+                files.append(item)
+            else:
+                raise NotImplementedError("Huh???")
+
+        subdirectories.sort()
         files.sort()
 
-        for file_name in files:
-            file = Path(current_directory/file_name)
-            if file.is_symlink():
-                raise NotImplementedError("symlink handling is not implemented")
-            else:
-                print(file_name + ": " + hash_file(file))
-    return ''
+        for f in files:
+            print("┃"*(len(stack)-1) + "┣" + str(f.stem) + ": " + hash_file(f))
+        for subdirectory in subdirectories:
+            todo_list.append(subdirectory)
 
 
 def hash_file(path: Path) -> str:
