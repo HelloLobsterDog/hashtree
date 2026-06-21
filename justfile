@@ -1,6 +1,6 @@
 
 run:
-    @uv run hashtree .
+    @uv run hashtree testing/happy_path
 
 setup:
     @uv sync

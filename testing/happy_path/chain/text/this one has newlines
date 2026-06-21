@@ -1,0 +1,6 @@
+hi,
+I'm a text file that has newlines in it.
+The idea behind including this in the tests is to remove the possibility that the program isn't handling new lines correctly.
+In addition, this file is setup weirdly, and has a combination of windows newlines and unix newlines.
+
+Is this likely to actually find any bugs? Not really, but I may as well include it, right?
