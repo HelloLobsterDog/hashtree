@@ -1,6 +1,6 @@
 [project]
 name = "hashtree"
-version = "0.0.1"
+version = "0.2.0"
 description = "CLI utility to compute hashes for an entire directory tree and all files within"
 readme = "README.md"
 requires-python = ">=3.12" # Path.walk was added in 3.12
