@@ -1,3 +1,5 @@
+import shutil
+import tempfile
 from io import StringIO
 from pathlib import Path
 
@@ -24,4 +26,18 @@ def test_real_folder():
 ┗humor
  ┗bee movie.txt: 5c18b58b2e7194a7f78bb55671d43e10
 '''
-    assert result == '0'
+    assert result == 'c2b54c4674e73d81b84ba643cb607e8d'
+
+
+def test_absolute_path_does_not_change_results():
+    happy_path_stream = StringIO()
+    happy_path_result = hash_tree(Path(__file__).parent.parent / 'testing' / 'happy_path', happy_path_stream)
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        shutil.copytree(Path(__file__).parent.parent / 'testing' / 'happy_path', Path(tmpdir)/'happy_path')
+
+        moved_stream = StringIO()
+        moved_result = hash_tree(Path(tmpdir)/'happy_path', moved_stream)
+
+        assert happy_path_stream.getvalue() == moved_stream.getvalue()
+        assert moved_result == happy_path_result

@@ -32,8 +32,14 @@ class InProgressDirectory:
     todo_list: Queue[Path]
     completed: list[Tuple[Path, str]]
 
-    def get_hash(self) -> str:
-        return '0' # TODO
+    def get_hash(self, hash_name='md5') -> str:
+        hasher = hashlib.new(hash_name)
+        for hash_component in sorted(self.completed, key=lambda x: x[0].name):
+            hasher.update(hash_component[0].name.encode('utf-8'))
+            hasher.update(b"|")
+            hasher.update(hash_component[1].encode('utf-8'))
+            hasher.update(b'//')
+        return hasher.hexdigest()
 
 
 def make_wip(directory: Path) -> InProgressDirectory:
