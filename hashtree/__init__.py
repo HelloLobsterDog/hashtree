@@ -8,7 +8,7 @@ from queue import Queue
 from typing import Tuple, TextIO
 
 
-__version__ = '0.0.2'
+__version__ = '0.0.3'
 
 
 def setup_argparse() -> argparse.ArgumentParser:
