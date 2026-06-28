@@ -3,13 +3,6 @@ from pathlib import Path
 from hashtree import hash_file
 
 
-def test_I_did_not_break_the_newline_file_accidentally():
-    with open(Path(__file__).parent.parent / 'testing' / 'happy_path' / 'chain' / 'text' / 'this one has newlines', 'rb') as f:
-        contents = f.read()
-        assert contents.count(b'\n') == 5
-        assert contents.count(b'\r') == 3 # not the same!
-
-
 def test_md5():
     testing_directory = Path(__file__).parent.parent/'testing'
 

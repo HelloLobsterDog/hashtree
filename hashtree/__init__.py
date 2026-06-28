@@ -56,7 +56,7 @@ def make_wip(directory: Path) -> InProgressDirectory:
             raise NotImplementedError("Huh???")
     subdirectories.sort()
     files.sort()
-    todo_list = Queue()
+    todo_list: Queue = Queue()
     for item in files:
         todo_list.put(item)
     for subdir in subdirectories:
