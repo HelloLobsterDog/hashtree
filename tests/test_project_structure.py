@@ -26,3 +26,10 @@ def test_python_version_matches():
         toml_version = data['project']['requires-python'].replace(">", '').replace('=', '')
     with open(Path(__file__).parent.parent / ".python-version", "r") as python_version:
         assert toml_version == python_version.read().replace("\n", '')
+
+
+def test_usage_in_readme_matches_real():
+    with open(Path(__file__).parent.parent / "README.MD", "r") as readme:
+        contents = readme.read().replace("\r\n", "\n")
+        just_usage = contents[contents.find("# Usage\n```")+11:contents.find("```", contents.find("# Usage\n```")+11)].strip()
+        assert just_usage+'\n' == hashtree.setup_argparse().format_help()
