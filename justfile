@@ -1,6 +1,6 @@
 
 run:
-    @uv run hashtree testing/happy_path
+    @uv run hashtree.py testing/happy_path
 
 setup:
     @uv sync

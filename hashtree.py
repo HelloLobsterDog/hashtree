@@ -123,3 +123,7 @@ def hash_tree(path: Path, stream: TextIO) -> str:
 def hash_file(path: Path) -> str:
     with open(path, 'rb') as f:
         return hashlib.file_digest(f, "md5").hexdigest()
+
+
+if __name__ == "__main__":
+    run()
