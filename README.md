@@ -23,9 +23,9 @@ happy_path
 ```
 
 ### Use cases
-- determine whether two directories on the same machine are the same without needing to buy or install tools like beyondcompare
+- determine whether two directories are the same without needing to buy or install tools like beyondcompare
 - automated backup deduplication
-- determine whether two directories on different machines are the same without needing to send them across the network
+- determine whether two directories on different machines are the same without needing to send them over the network to compare them
 - track changes to a file tree through time without needing to store every modification made to every file
 
 # Installation
