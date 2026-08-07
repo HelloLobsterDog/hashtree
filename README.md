@@ -1,7 +1,7 @@
 # hashtree
-A CLI utility to recursively calculate hashes for everything in a directory tree, and provide a single composite hash of everything.
+A CLI utility to calculate hashes for everything in a directory tree and provide a single composite hash of everything, including subdirectories and their contents.
 
-It is written in Python, and works on all major OSes where python is installed.
+It works on all major OSes where Python is installed.
 
 ```
 $ hashtree testing/happy_path
