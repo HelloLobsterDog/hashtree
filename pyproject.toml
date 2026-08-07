@@ -6,6 +6,9 @@ readme = "README.md"
 requires-python = ">=3.11" # hashlib.file_digest & tomllib were introduced in version 3.11
 dependencies = []
 
+[project.scripts]
+hashtree = "hashtree:run"
+
 [dependency-groups]
 dev = [
     "mypy>=1.19.0",
