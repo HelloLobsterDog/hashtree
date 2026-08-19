@@ -117,6 +117,10 @@ def hash_tree(path: Path, stream: TextIO) -> str:
                 parent.completed.append((current.path, current.get_hash()))
                 parent.in_progress = None
 
+    stream.write("\n")
+    stream.write("Final hash: ")
+    stream.write(root.get_hash())
+    stream.write("\n")
     return root.get_hash()
 
 

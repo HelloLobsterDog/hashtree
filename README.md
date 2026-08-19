@@ -20,6 +20,8 @@ happy_path
 ┣empty
 ┗humor
  ┗bee movie.txt: 5c18b58b2e7194a7f78bb55671d43e10
+
+Final hash: c2b54c4674e73d81b84ba643cb607e8d
 ```
 
 ### Use cases
