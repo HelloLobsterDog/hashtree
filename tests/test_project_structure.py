@@ -29,7 +29,7 @@ def test_python_version_matches():
 
 
 def test_usage_in_readme_matches_real():
-    with open(Path(__file__).parent.parent / "README.MD", "r") as readme:
+    with open(Path(__file__).parent.parent / "README.MD", "r", encoding="utf-8") as readme:
         contents = readme.read().replace("\r\n", "\n")
         just_usage = contents[contents.find("# Usage\n```")+11:contents.find("```", contents.find("# Usage\n```")+11)].strip()
         assert just_usage+'\n' == hashtree.setup_argparse().format_help()

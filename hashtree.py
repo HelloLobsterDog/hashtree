@@ -8,7 +8,7 @@ from queue import Queue
 from typing import Tuple, TextIO
 
 
-__version__ = '0.0.5'
+__version__ = '0.0.6'
 
 
 def setup_argparse() -> argparse.ArgumentParser:
@@ -69,14 +69,14 @@ def assemble_prefix(stack: list[InProgressDirectory]) -> str:
     prefix = ''
     for x in stack:
         if x.todo_list.empty():
-            prefix += ' '
+            prefix += '  '
         else:
-            prefix += '┃'
+            prefix += '┃ '
     last = stack[-1]
     if last.todo_list.empty():
-        prefix = prefix[:-1] + '┗'
+        prefix = prefix[:-2] + '┗━'
     else:
-        prefix = prefix[:-1] + '┣'
+        prefix = prefix[:-2] + '┣━'
     return prefix
 
 
