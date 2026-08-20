@@ -1,6 +1,6 @@
 [project]
 name = "hashtree"
-version = "0.0.4"
+version = "0.0.5"
 description = "A CLI utility to calculate hashes for everything in a directory tree and provide a single composite hash of everything, including subdirectories and their contents."
 readme = "README.md"
 requires-python = ">=3.11" # hashlib.file_digest & tomllib were introduced in version 3.11
