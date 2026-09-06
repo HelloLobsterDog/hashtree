@@ -2,27 +2,38 @@ import argparse
 import hashlib
 import sys
 from dataclasses import dataclass
+from io import StringIO
 from pathlib import Path
 from queue import Queue
 
 from typing import Tuple, TextIO
 
-
-__version__ = '0.0.6'
+__version__ = '0.1.0'
 
 
 def setup_argparse() -> argparse.ArgumentParser:
-    parser: argparse.ArgumentParser = argparse.ArgumentParser(prog="hashtree", description='calculate hashes for everything in a directory tree')
+    parser = argparse.ArgumentParser(prog="hashtree",
+                                     description='Calculate hashes for everything in a directory tree and provide a '
+                                                 'single composite hash of everything, including subdirectories and '
+                                                 'their contents.')
 
-    parser.add_argument("paths", nargs='+', help="paths to calculate hashes for")
+    parser.add_argument("path", help="Path to calculate hashes for")
+    parser.add_argument("-q", "--quiet", action='store_true', help="Output will be limited only to the final hash")
+    parser.add_argument("-v", "--version", action='version', version=__version__)
 
     return parser
 
 
 def run() -> None:
     args: argparse.Namespace = setup_argparse().parse_args()
-    for path in args.paths:
-        hash_tree(Path(path), sys.stdout)
+    out = sys.stdout
+    if args.quiet:
+        out = StringIO()
+    final_hash = hash_tree(Path(args.path), out)
+    if args.quiet:
+        print(final_hash)
+    else:
+        print("\nFinal hash: " + final_hash)
 
 
 @dataclass
@@ -117,10 +128,6 @@ def hash_tree(path: Path, stream: TextIO) -> str:
                 parent.completed.append((current.path, current.get_hash()))
                 parent.in_progress = None
 
-    stream.write("\n")
-    stream.write("Final hash: ")
-    stream.write(root.get_hash())
-    stream.write("\n")
     return root.get_hash()
 
 

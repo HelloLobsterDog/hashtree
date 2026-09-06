@@ -38,15 +38,18 @@ Installation through pip is planned when the project is in a more complete state
 
 # Usage
 ```
-usage: hashtree [-h] paths [paths ...]
+usage: hashtree [-h] [-q] [-v] path
 
-calculate hashes for everything in a directory tree
+Calculate hashes for everything in a directory tree and provide a single
+composite hash of everything, including subdirectories and their contents.
 
 positional arguments:
-  paths       paths to calculate hashes for
+  path           Path to calculate hashes for
 
 options:
-  -h, --help  show this help message and exit
+  -h, --help     show this help message and exit
+  -q, --quiet    Output will be limited only to the final hash
+  -v, --version  show program's version number and exit
 ```
 
 ## Credits
